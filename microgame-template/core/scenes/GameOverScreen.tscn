@@ -3,38 +3,39 @@
 [ext_resource type="Script" uid="uid://tlmbquax5tfj" path="res://core/scripts/game_over_screen.gd" id="1_n0qvx"]
 
 [node name="GameOverScreen" type="CanvasLayer" unique_id=1515293332]
+process_mode = 3
 script = ExtResource("1_n0qvx")
 
-[node name="Panel" type="Control" parent="." unique_id=531355407]
-layout_mode = 3
-anchors_preset = 0
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=861501290]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Title" type="Label" parent="Panel" unique_id=1446753490]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1337674449]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=460413952]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=993775239]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1852456262]
+layout_mode = 2
 text = "GAME OVER"
+horizontal_alignment = 1
 
-[node name="FinalScoreLabel" type="Label" parent="Panel" unique_id=541358223]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="FinalScoreLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=211406354]
+layout_mode = 2
 
-[node name="BestScoreLabel" type="Label" parent="Panel" unique_id=215344458]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="BestScoreLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=408351954]
+layout_mode = 2
 
-[node name="RetryButton" type="Button" parent="Panel" unique_id=819235458]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="RetryButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1829857425]
+custom_minimum_size = Vector2(220, 56)
+layout_mode = 2
 text = "RETRY"
 
-[node name="TitleButton" type="Button" parent="Panel" unique_id=1483996187]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="TitleButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=156138165]
+custom_minimum_size = Vector2(220, 56)
+layout_mode = 2
 text = "TITLE"

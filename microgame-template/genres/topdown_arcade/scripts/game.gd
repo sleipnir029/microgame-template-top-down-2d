@@ -7,6 +7,7 @@ const PLAYER_SCENE := preload("res://genres/topdown_arcade/scenes/Player.tscn")
 const HAZARD_SCENE := preload("res://genres/topdown_arcade/scenes/Hazard.tscn")
 const PICKUP_SCENE := preload("res://genres/topdown_arcade/scenes/Pickup.tscn")
 
+@onready var camera: Camera2D = $Camera2D
 @onready var player_spawn: Marker2D = $PlayerSpawn
 @onready var entities: Node2D = $Entities
 @onready var spawner = $Spawner
@@ -17,18 +18,33 @@ const PICKUP_SCENE := preload("res://genres/topdown_arcade/scenes/Pickup.tscn")
 var player: Area2D
 var score: int = 0
 var running: bool = false
+var shake_strength: float = 0.0
+var camera_base_offset: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	visible = false
+	camera.enabled = true
+	camera.position = player_spawn.position
+	camera.offset = Vector2.ZERO
+	camera_base_offset = camera.offset
+
 	spawner.spawn_requested.connect(_on_spawn_requested)
 	score_timer.timeout.connect(_on_score_timer_timeout)
 	difficulty_timer.timeout.connect(_on_difficulty_timer_timeout)
 	pickup_timer.timeout.connect(_on_pickup_timer_timeout)
 
+func _process(delta: float) -> void:
+	update_camera_shake(delta)
+
 func start_run() -> void:
 	clear_entities()
 	score = 0
 	running = true
+	shake_strength = 0.0
+
+	camera.position = player_spawn.position
+	camera.offset = Vector2.ZERO
+
 	score_changed.emit(score)
 
 	spawner.reset()
@@ -48,6 +64,9 @@ func stop_run() -> void:
 	difficulty_timer.stop()
 	pickup_timer.stop()
 	clear_entities()
+	camera.position = player_spawn.position
+	camera.offset = camera_base_offset
+	shake_strength = 0.0
 
 func spawn_player() -> void:
 	player = PLAYER_SCENE.instantiate()
@@ -63,6 +82,21 @@ func clear_entities() -> void:
 func add_score(amount: int) -> void:
 	score += amount
 	score_changed.emit(score)
+
+func add_shake(amount: float) -> void:
+	shake_strength = max(shake_strength, amount)
+
+func update_camera_shake(delta: float) -> void:
+	if shake_strength <= 0.01:
+		camera.offset = camera_base_offset
+		shake_strength = 0.0
+		return
+
+	camera.offset = camera_base_offset + Vector2(
+		randf_range(-shake_strength, shake_strength),
+		randf_range(-shake_strength, shake_strength)
+	)
+	shake_strength = lerp(shake_strength, 0.0, 8.0 * delta)
 
 func _on_spawn_requested(spawn_position: Vector2, velocity: Vector2) -> void:
 	if not running:
@@ -98,6 +132,11 @@ func _on_player_hit_hazard() -> void:
 		return
 
 	running = false
+	add_shake(12.0)
+	Engine.time_scale = 0.35
+	await get_tree().create_timer(0.12, true, false, true).timeout
+	Engine.time_scale = 1.0
+
 	spawner.stop()
 	score_timer.stop()
 	difficulty_timer.stop()
@@ -109,5 +148,8 @@ func _on_player_collected_pickup(pickup: Area2D) -> void:
 		return
 
 	if is_instance_valid(pickup):
+		Juice.pulse_scale(player, 1.08, 0.05)
+		add_shake(4.0)
 		pickup.queue_free()
+
 	add_score(5)

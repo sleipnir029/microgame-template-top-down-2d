@@ -13,6 +13,9 @@ offset_right = 1200.0
 offset_bottom = 640.0
 color = Color(0.12156863, 0.16078432, 0.21568628, 1)
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=850286221]
+position = Vector2(640, 360)
+
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1116126958]
 position = Vector2(640, 360)
 
