@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c770ks2rs2slf"]
+
+[ext_resource type="PackedScene" uid="uid://c7p15pmipna08" path="res://genres/topdown_arcade/scenes/Spawner.tscn" id="1_fm1nh"]
+[ext_resource type="Script" uid="uid://dioibjcgoxrcv" path="res://genres/topdown_arcade/scripts/game.gd" id="1_lxvqe"]
+
+[node name="Game" type="Node2D" unique_id=594136363]
+script = ExtResource("1_lxvqe")
+
+[node name="ArenaRect" type="ColorRect" parent="." unique_id=554050949]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 1200.0
+offset_bottom = 640.0
+color = Color(0.12156863, 0.16078432, 0.21568628, 1)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1116126958]
+position = Vector2(640, 360)
+
+[node name="Entities" type="Node2D" parent="." unique_id=1701921333]
+
+[node name="Spawner" parent="." unique_id=1181501891 instance=ExtResource("1_fm1nh")]
+
+[node name="ScoreTimer" type="Timer" parent="." unique_id=757978573]
+
+[node name="DifficultyTimer" type="Timer" parent="." unique_id=989555858]
+wait_time = 5.0
+
+[node name="PickupTimer" type="Timer" parent="." unique_id=1253944958]
+wait_time = 2.0

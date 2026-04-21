@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bbikv2y4otmry"]
+
+[ext_resource type="Script" uid="uid://de76bs6wjh8ja" path="res://genres/topdown_arcade/scripts/player.gd" id="1_s0kk8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xq0dm"]
+radius = 18.0
+
+[node name="Player" type="Area2D" unique_id=1861811546]
+script = ExtResource("1_s0kk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=788459312]
+shape = SubResource("CircleShape2D_xq0dm")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=467993247]
+color = Color(0.13333334, 0.827451, 0.93333334, 1)
+polygon = PackedVector2Array(7.6293945e-06, -32.000008, 32.000008, -1.04904175e-05, -2.2888184e-05, 31.999989, -31.999992, -1.04904175e-05)
+uv = PackedVector2Array(-16, -40.000004, 32, 0, -16, 32, -56, 0)
+vertex_colors = PackedColorArray(0.13333334, 0.827451, 0.93333334, 1)

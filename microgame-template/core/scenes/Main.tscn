@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://uqtt38213vyp"]
+
+[ext_resource type="PackedScene" uid="uid://c770ks2rs2slf" path="res://genres/topdown_arcade/scenes/Game.tscn" id="1_4pl23"]
+[ext_resource type="Script" uid="uid://clx6mdl4lwm1r" path="res://core/scripts/main.gd" id="1_jmf10"]
+[ext_resource type="PackedScene" uid="uid://cp44wqbch5r6n" path="res://core/scenes/HUD.tscn" id="2_jmf10"]
+[ext_resource type="PackedScene" uid="uid://d2rvjuageendk" path="res://core/scenes/TitleScreen.tscn" id="3_u0bje"]
+[ext_resource type="PackedScene" uid="uid://l8bskrba0whq" path="res://core/scenes/GameOverScreen.tscn" id="4_5c5o6"]
+
+[node name="Main" type="Node2D" unique_id=1765902914]
+script = ExtResource("1_jmf10")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2119667866]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06666667, 0.09411765, 0.15294118, 1)
+
+[node name="Game" parent="." unique_id=594136363 instance=ExtResource("1_4pl23")]
+
+[node name="HUD" parent="." unique_id=709377701 instance=ExtResource("2_jmf10")]
+
+[node name="TitleScreen" parent="." unique_id=1836575443 instance=ExtResource("3_u0bje")]
+
+[node name="GameOverScreen" parent="." unique_id=202386818 instance=ExtResource("4_5c5o6")]
+visible = false

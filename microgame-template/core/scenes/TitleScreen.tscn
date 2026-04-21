@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d2rvjuageendk"]
+
+[ext_resource type="Script" uid="uid://b1ug6srgoe2w1" path="res://core/scripts/title_screen.gd" id="1_kpyhq"]
+
+[node name="TitleScreen" type="CanvasLayer" unique_id=888901371]
+script = ExtResource("1_kpyhq")
+
+[node name="Panel" type="Control" parent="." unique_id=2053102190]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Panel" unique_id=1379300731]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "MICROGAME TEMPLATE"
+
+[node name="Subtitle" type="Label" parent="Panel" unique_id=911823269]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Press Start to Play"
+
+[node name="StartButton" type="Button" parent="Panel" unique_id=1419127040]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "START"

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://l8bskrba0whq"]
+
+[ext_resource type="Script" uid="uid://tlmbquax5tfj" path="res://core/scripts/game_over_screen.gd" id="1_n0qvx"]
+
+[node name="GameOverScreen" type="CanvasLayer" unique_id=1515293332]
+script = ExtResource("1_n0qvx")
+
+[node name="Panel" type="Control" parent="." unique_id=531355407]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="Panel" unique_id=1446753490]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "GAME OVER"
+
+[node name="FinalScoreLabel" type="Label" parent="Panel" unique_id=541358223]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="BestScoreLabel" type="Label" parent="Panel" unique_id=215344458]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="RetryButton" type="Button" parent="Panel" unique_id=819235458]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "RETRY"
+
+[node name="TitleButton" type="Button" parent="Panel" unique_id=1483996187]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "TITLE"

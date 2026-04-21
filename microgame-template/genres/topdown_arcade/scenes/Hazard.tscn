@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dw0q86y1mss3b"]
+
+[ext_resource type="Script" uid="uid://bk47srvd56am3" path="res://genres/topdown_arcade/scripts/hazard.gd" id="1_oprrd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x1bwh"]
+radius = 16.0
+
+[node name="Hazard" type="Area2D" unique_id=299960559 groups=["hazard"]]
+script = ExtResource("1_oprrd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2082280796]
+shape = SubResource("CircleShape2D_x1bwh")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1621407770]
+color = Color(0.9372549, 0.26666668, 0.26666668, 1)
+polygon = PackedVector2Array(-3.8146973e-06, -24, 23.999996, -8.000004, -3.8146973e-06, 7.999996, -24.00002, -8.000004)
+uv = PackedVector2Array(-24, -24, 0, -8.000004, -24, 7.999996, -48.000015, -8.000004)

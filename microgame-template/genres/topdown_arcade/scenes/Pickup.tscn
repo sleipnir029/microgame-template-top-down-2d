@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c4wp5uxl5cma8"]
+
+[ext_resource type="Script" uid="uid://nm156fshg722" path="res://genres/topdown_arcade/scripts/pickup.gd" id="1_1p2hc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3bug1"]
+radius = 12.0
+
+[node name="Pickup" type="Area2D" unique_id=1761016022 groups=["pickup"]]
+script = ExtResource("1_1p2hc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=758148390]
+shape = SubResource("CircleShape2D_3bug1")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=2021301778]
+color = Color(0.98039216, 0.8, 0.08235294, 1)
+polygon = PackedVector2Array(0, -8, 16, 8, 0, 23.999996, -15.999992, 8)
+uv = PackedVector2Array(-48, -8, -32, 8, -48, 23.999996, -63.999992, 8)
